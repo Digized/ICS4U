@@ -15,8 +15,9 @@ public class ICS4U {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.print("Hello World");
-        System.out.print("HI again");
+        System.out.println("Hello World");
+        System.out.println("HI again");
+        System.out.println("THIS IS WORKING");
     }
     
 }
