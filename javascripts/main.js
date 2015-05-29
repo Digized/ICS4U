@@ -1,45 +1,16 @@
 console.log('This would be the main JS file.');
-<!-- this script got from www.javascriptfreecode.com-Coded by: Krishna Eydat -->
-
-<p>[<a href="/"
-onmouseover="document.bgColor='green'">Green</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='greem'">Bright Green</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='seagreen'">Sea Green</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='red'">Red</a>]<BR>
-[<a href="/"
-onmouseover="document.bgColor='magenta'">Magenta</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='fusia'">Fusia</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='pink'">Pink</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='purple'">Purple</a>]<BR>
-[<a href="/"
-onmouseover="document.bgColor='navy'">Navy</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='blue'">Blue</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='royalblue'">Royal Blue</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='Skyblue'">Sky Blue</a>]<BR>
-[<a href="/"
-onmouseover="document.bgColor='yellow'">Yellow</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='brown'">Brown</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='almond'">Almond</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='white'">White</a>]<BR>
-[<a href="/"
-onmouseover="document.bgColor='black'">Black</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='coral'">Coral</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='olivedrab'">Olive Drab</a>]<br>
-[<a href="/"
-onmouseover="document.bgColor='orange'">Orange</a>]<br>
-<hr color="#00FFFF">
+<!-- this script got from www.javascriptfreecode.com coded by: Krishna Eydat-->
+<body style="background-color: #3e4b6a">
+<font color="#9ba5c7">
+<script language="javascript">
+document.write(unescape("%3CDIV%20id%3DLayer1%20style%3D%22Z-INDEX%3A1%3B%20LEFT%3A0px%3B%20WIDTH%3A0%3B%20POSITION%3Aabsolute%3B%20TOP%3A0px%3B%20HEIGHT%3A0%3B%22%3E%0D%0A%3CEMBED%20pluginspage%3D%22http%3A//www.macromedia.com/go/getflashplayer%22%20src%3D%22http://bahar-20.com/ftp/subject/other.best/java.ghatreh/drip.swf%22%20width%3D%22990%22%20height%3D%22640%22%20type%3Dapplication/x-shockwave-flash%20quality%3D%22high%22%20menu%3D%22false%22%20wmode%3D%22transparent%22%3E%0D%0A%3C/EMBED%3E%0D%0A%3C/DIV%3E%0D%0A%3CDIV%20id%3DLayer1%20style%3D%22Z-INDEX%3A1%3B%20LEFT%3A0px%3B%20WIDTH%3A0%3B%20POSITION%3Aabsolute%3B%20TOP%3A645px%3B%20HEIGHT%3A0%3B%22%3E%0D%0A%3CEMBED%20pluginspage%3D%22http%3A//www.macromedia.com/go/getflashplayer%22%20src%3D%22http://bahar-20.com/ftp/subject/other.best/java.ghatreh/drip.swf%22%20width%3D%22990%22%20height%3D%22640%22%20type%3Dapplication/x-shockwave-flash%20quality%3D%22high%22%20menu%3D%22false%22%20wmode%3D%22transparent%22%3E%0D%0A%3C/EMBED%3E%0D%0A%3C/DIV%3E"));
+</script>
+<div style="Z-INDEX:1; LEFT:0px; WIDTH:0; POSITION:absolute; TOP:0px; HEIGHT:0;" id="Layer1">
+<embed width="990" height="640" wmode="transparent" menu="false" quality="high" type="application/x-shockwave-flash" src="http://bahar-20.com/ftp/subject/other.best/java.ghatreh/drip.swf" pluginspage="http://www.macromedia.com/go/getflashplayer">
+</div>
+<div style="Z-INDEX:1; LEFT:0px; WIDTH:0; POSITION:absolute; TOP:645px; HEIGHT:0;" id="Layer1">
+<embed width="990" height="640" wmode="transparent" menu="false" quality="high" type="application/x-shockwave-flash" src="http://bahar-20.com/ftp/subject/other.best/java.ghatreh/drip.swf" pluginspage="http://www.macromedia.com/go/getflashplayer">
+</div><br><br><br>
+</font>
+</body>
 <font face="Tahoma"><a target="_blank" href="http://www.javascriptfreecode.com/"><span style="font-size: 8pt; text-decoration: none">JavaScript Free Code</span></a></font>
