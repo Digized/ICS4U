@@ -49,7 +49,7 @@ public class Screen_Intro extends javax.swing.JFrame {
         out_Instruction.setOpaque(false);
         jScrollPane1.setViewportView(out_Instruction);
 
-        lbl_Title.setIcon(new javax.swing.ImageIcon("D:\\Data\\Zuraiz\\My Documents\\NetBeansProjects\\ICS4U\\title.jpg")); // NOI18N
+        lbl_Title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/title.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
