@@ -16,8 +16,14 @@ public class Display extends javax.swing.JFrame {
     /**
      * Creates new form Screen_Intro
      */
+    public int[][] correctArray = new int[3][3];
+    int[][] userArray = new int[3][3];
+    int moves;
+
     public Display() {
         initComponents();
+        
+        setStart();
     }
 
     /**
@@ -53,6 +59,7 @@ public class Display extends javax.swing.JFrame {
         btn_7 = new javax.swing.JButton();
         btn_8 = new javax.swing.JButton();
         btn_Back = new javax.swing.JButton();
+        lblmoves = new javax.swing.JLabel();
 
         Dialog_Intro.setBackground(new java.awt.Color(0, 0, 0));
         Dialog_Intro.setMinimumSize(new java.awt.Dimension(400, 400));
@@ -198,8 +205,18 @@ public class Display extends javax.swing.JFrame {
         lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/title.jpg"))); // NOI18N
 
         btn_0.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_0ActionPerformed(evt);
+            }
+        });
 
         btn_1.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_1ActionPerformed(evt);
+            }
+        });
 
         btn_2.setPreferredSize(new java.awt.Dimension(125, 125));
 
@@ -222,6 +239,9 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
+        lblmoves.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblmoves.setText("Moves left: 31");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -229,9 +249,10 @@ public class Display extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btn_Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblmoves, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
@@ -276,7 +297,9 @@ public class Display extends javax.swing.JFrame {
                     .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_Back, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addComponent(lblmoves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -284,10 +307,10 @@ public class Display extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        
+      
         new Display().setVisible(true);
         Dialog_Intro.dispose();
-        
+
 
     }//GEN-LAST:event_btnStartActionPerformed
 
@@ -316,6 +339,72 @@ public class Display extends javax.swing.JFrame {
     private void comboboxPictureSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxPictureSelectionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
+
+    private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
+        System.out.println(moves);
+        checkArray(userArray);
+    }//GEN-LAST:event_btn_0ActionPerformed
+
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+       userArray[2][2]=9;
+       userArray[2][1]=8;
+       System.out.println(moves);
+        checkArray(userArray);
+    }//GEN-LAST:event_btn_1ActionPerformed
+
+    void DisplayGOScreen(String GOText) {
+        lblTxt.setText(GOText);
+        Dialog_GameOver.setVisible(true);
+        this.setVisible(false);
+    }
+
+    //assign correct array numbers
+    public void setStart() {
+
+        correctArray[0][0] = 1;
+        correctArray[0][1] = 2;
+        correctArray[0][2] = 3;
+        correctArray[1][0] = 4;
+        correctArray[1][1] = 5;
+        correctArray[1][2] = 6;
+        correctArray[2][0] = 7;
+        correctArray[2][1] = 8;
+        correctArray[2][2] = 9;
+        userArray[0][0] = 1;
+        userArray[0][1] = 2;
+        userArray[0][2] = 3;
+        userArray[1][0] = 4;
+        userArray[1][1] = 5;
+        userArray[1][2] = 6;
+        userArray[2][0] = 7;
+        userArray[2][1] = 9;
+        userArray[2][2] = 8;
+        moves = 31;
+    }
+
+    void checkArray(int userArray[][]) {
+        int count = 0;
+        for (int i = 0; i < correctArray.length; i++) {
+            for (int j = 0; j < correctArray.length; j++) {
+                if (userArray[i][j] == correctArray[i][j]) {
+                    count++;
+                    System.out.print(userArray[i][j] + "\t" + correctArray[i][j]);
+                    System.out.println(count);
+                }
+            }
+        }
+         moves--;
+        if (count == 9) {
+            String txt = "YOU WON";
+            DisplayGOScreen(txt);
+
+        } else if (moves <= 0) {
+            String txt = "YOU LOST";
+            DisplayGOScreen(txt);
+        }
+       
+        lblmoves.setText("Moves left: "+moves);
+    }
 
     /**
      * @param args the command line arguments
@@ -378,5 +467,6 @@ public class Display extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTxt;
+    private javax.swing.JLabel lblmoves;
     // End of variables declaration//GEN-END:variables
 }
