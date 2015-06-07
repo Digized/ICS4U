@@ -19,6 +19,8 @@ public class Display extends javax.swing.JFrame {
     /**
      * Creates new form Screen_Intro
      */
+         //variables
+
     public int[][] correctArray = new int[3][3];
     ImageIcon[] images = new ImageIcon[9];
     JButton[][] buttonsArray = new JButton[3][3];
@@ -27,7 +29,13 @@ public class Display extends javax.swing.JFrame {
 
     public Display() {
         initComponents();
-
+//sets the board at the start
+        /*
+         Correct Array
+         Randomized UserArray
+         Images to location
+            
+         */
         setStart();
     }
 
@@ -353,16 +361,13 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-        System.out.println(moves);
-        checkArray(userArray);
+        
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-        userArray[2][2] = 9;
-        userArray[2][1] = 8;
-        System.out.println(moves);
-        checkArray(userArray);
+        
     }//GEN-LAST:event_btn_1ActionPerformed
+//GameOverScreen
 
     void DisplayGOScreen(String GOText) {
         lblTxt.setText(GOText);
@@ -404,6 +409,7 @@ public class Display extends javax.swing.JFrame {
         images[7] = new ImageIcon("src\\slidinggame\\Test_8.jpg");
         images[8] = new ImageIcon("src\\slidinggame\\Test_9.jpg");
         // </editor-fold>
+//randomize location of pictures
 
         int[] used = new int[9];
         int tracker = 0;
@@ -429,6 +435,7 @@ public class Display extends javax.swing.JFrame {
 
         moves = 31;
     }
+//assign pictures to location
 
     void ImageToNumber(){
         for (int i = 0; i < 3; i++) {
@@ -437,7 +444,8 @@ public class Display extends javax.swing.JFrame {
             }
         }
     }
-    
+       //randomize pictures
+ 
     public int Randomizer(int[] A, int B) {
         if (linearSearch(A, B)) {
             B = (int) (Math.random() * 9) + 1;
@@ -447,6 +455,7 @@ public class Display extends javax.swing.JFrame {
         }
 
     }
+//look if location has been used
 
     public boolean linearSearch(int[] A, int B) {
         for (int k = 0; k < A.length; k++) {
@@ -456,6 +465,7 @@ public class Display extends javax.swing.JFrame {
         }
         return false;
     }
+//compare user array and correct array and then display win if won or loss if lost
 
     void checkArray(int userArray[][]) {
         int count = 0;
