@@ -5,6 +5,9 @@
  */
 package slidinggame;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,12 +20,14 @@ public class Display extends javax.swing.JFrame {
      * Creates new form Screen_Intro
      */
     public int[][] correctArray = new int[3][3];
+    ImageIcon[] images = new ImageIcon[9];
+    JButton[][] buttonsArray = new JButton[3][3];
     int[][] userArray = new int[3][3];
     int moves;
 
     public Display() {
         initComponents();
-        
+
         setStart();
     }
 
@@ -65,7 +70,7 @@ public class Display extends javax.swing.JFrame {
         Dialog_Intro.setMinimumSize(new java.awt.Dimension(400, 400));
         Dialog_Intro.setName("Intro_Dialog"); // NOI18N
 
-        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/title.jpg"))); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
 
         btnStart.setText("START PLAYING");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +152,7 @@ public class Display extends javax.swing.JFrame {
         Dialog_GameOver.setMinimumSize(new java.awt.Dimension(400, 400));
         Dialog_GameOver.setName("Intro_Dialog"); // NOI18N
 
-        lblTitle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/title.jpg"))); // NOI18N
+        lblTitle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -202,9 +207,9 @@ public class Display extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/title.jpg"))); // NOI18N
+        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
 
-        btn_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Test_1.jpg"))); // NOI18N
+        btn_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_1.jpg"))); // NOI18N
         btn_0.setPreferredSize(new java.awt.Dimension(125, 125));
         btn_0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +217,7 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Test_2.jpg"))); // NOI18N
+        btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_2.jpg"))); // NOI18N
         btn_1.setPreferredSize(new java.awt.Dimension(125, 125));
         btn_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +243,6 @@ public class Display extends javax.swing.JFrame {
         btn_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_8.jpg"))); // NOI18N
         btn_7.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_8.setEnabled(false);
         btn_8.setPreferredSize(new java.awt.Dimension(125, 125));
 
         btn_Back.setText("Back");
@@ -315,7 +319,7 @@ public class Display extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-      
+
         new Display().setVisible(true);
         Dialog_Intro.dispose();
 
@@ -354,9 +358,9 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-       userArray[2][2]=9;
-       userArray[2][1]=8;
-       System.out.println(moves);
+        userArray[2][2] = 9;
+        userArray[2][1] = 8;
+        System.out.println(moves);
         checkArray(userArray);
     }//GEN-LAST:event_btn_1ActionPerformed
 
@@ -368,7 +372,7 @@ public class Display extends javax.swing.JFrame {
 
     //assign correct array numbers
     public void setStart() {
-
+        // <editor-fold defaultstate="collapsed" desc="Initialization">   
         correctArray[0][0] = 1;
         correctArray[0][1] = 2;
         correctArray[0][2] = 3;
@@ -378,16 +382,79 @@ public class Display extends javax.swing.JFrame {
         correctArray[2][0] = 7;
         correctArray[2][1] = 8;
         correctArray[2][2] = 9;
-        userArray[0][0] = 1;
-        userArray[0][1] = 2;
-        userArray[0][2] = 3;
-        userArray[1][0] = 4;
-        userArray[1][1] = 5;
-        userArray[1][2] = 6;
-        userArray[2][0] = 7;
-        userArray[2][1] = 9;
-        userArray[2][2] = 8;
+        
+
+        buttonsArray[0][0] = btn_0;
+        buttonsArray[0][1] = btn_1;
+        buttonsArray[0][2] = btn_2;
+        buttonsArray[1][0] = btn_3;
+        buttonsArray[1][1] = btn_4;
+        buttonsArray[1][2] = btn_5;
+        buttonsArray[2][0] = btn_6;
+        buttonsArray[2][1] = btn_7;
+        buttonsArray[2][2] = btn_8;
+
+        images[0] = new ImageIcon("src\\slidinggame\\Test_1.jpg");
+        images[1] = new ImageIcon("src\\slidinggame\\Test_2.jpg");
+        images[2] = new ImageIcon("src\\slidinggame\\Test_3.jpg");
+        images[3] = new ImageIcon("src\\slidinggame\\Test_4.jpg");
+        images[4] = new ImageIcon("src\\slidinggame\\Test_5.jpg");
+        images[5] = new ImageIcon("src\\slidinggame\\Test_6.jpg");
+        images[6] = new ImageIcon("src\\slidinggame\\Test_7.jpg");
+        images[7] = new ImageIcon("src\\slidinggame\\Test_8.jpg");
+        images[8] = new ImageIcon("src\\slidinggame\\Test_9.jpg");
+        // </editor-fold>
+
+        int[] used = new int[9];
+        int tracker = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int tempvar = (int) (Math.random() * 9) + 1;
+                used[tracker] = Randomizer(used, tempvar);
+                userArray[i][j] = used[tracker];
+                tracker++;
+            }
+        }
+        System.out.print(Arrays.deepToString(userArray));
+
+        ImageToNumber();
+           for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (userArray[i][j]==9){
+                buttonsArray[i][j].setEnabled(false);
+                buttonsArray[i][j].setIcon(null);
+                }
+            }
+        }
+
         moves = 31;
+    }
+
+    void ImageToNumber(){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                buttonsArray[i][j].setIcon(images[(userArray[i][j]-1)]);
+            }
+        }
+    }
+    
+    public int Randomizer(int[] A, int B) {
+        if (linearSearch(A, B)) {
+            B = (int) (Math.random() * 9) + 1;
+            return Randomizer(A, B);
+        } else {
+            return B;
+        }
+
+    }
+
+    public boolean linearSearch(int[] A, int B) {
+        for (int k = 0; k < A.length; k++) {
+            if (A[k] == B) {
+                return true;
+            }
+        }
+        return false;
     }
 
     void checkArray(int userArray[][]) {
@@ -401,7 +468,7 @@ public class Display extends javax.swing.JFrame {
                 }
             }
         }
-         moves--;
+        moves--;
         if (count == 9) {
             String txt = "YOU WON";
             DisplayGOScreen(txt);
@@ -410,8 +477,8 @@ public class Display extends javax.swing.JFrame {
             String txt = "YOU LOST";
             DisplayGOScreen(txt);
         }
-       
-        lblmoves.setText("Moves left: "+moves);
+
+        lblmoves.setText("Moves left: " + moves);
     }
 
     /**
