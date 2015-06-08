@@ -21,11 +21,13 @@ public class Display extends javax.swing.JFrame {
      */
          //variables
 
+    XML xml=new XML();
     public int[][] correctArray = new int[3][3];
     ImageIcon[] images = new ImageIcon[9];
     JButton[][] buttonsArray = new JButton[3][3];
     int[][] userArray = new int[3][3];
-    int moves;
+    int moves;String Player="Zuraiz";
+    String[] score,name;
 
     public Display() {
         initComponents();
@@ -61,6 +63,9 @@ public class Display extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         lblTxt = new javax.swing.JLabel();
         btnExit1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        HighScore = new javax.swing.JTextArea();
         lblTitle1 = new javax.swing.JLabel();
         btn_0 = new javax.swing.JButton();
         btn_1 = new javax.swing.JButton();
@@ -111,7 +116,6 @@ public class Display extends javax.swing.JFrame {
         lblInfo1.setText("Please select the image to unscramble:");
 
         lblDisplayPicture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDisplayPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Image1_Original.jpg"))); // NOI18N
 
         javax.swing.GroupLayout Dialog_IntroLayout = new javax.swing.GroupLayout(Dialog_Intro.getContentPane());
         Dialog_Intro.getContentPane().setLayout(Dialog_IntroLayout);
@@ -180,19 +184,28 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("HIGHSCORES");
+
+        HighScore.setColumns(20);
+        HighScore.setRows(5);
+        jScrollPane1.setViewportView(HighScore);
+
         javax.swing.GroupLayout Dialog_GameOverLayout = new javax.swing.GroupLayout(Dialog_GameOver.getContentPane());
         Dialog_GameOver.getContentPane().setLayout(Dialog_GameOverLayout);
         Dialog_GameOverLayout.setHorizontalGroup(
             Dialog_GameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Dialog_GameOverLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_GameOverLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Dialog_GameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Dialog_GameOverLayout.createSequentialGroup()
+                .addGroup(Dialog_GameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(lblTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dialog_GameOverLayout.createSequentialGroup()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         Dialog_GameOverLayout.setVerticalGroup(
@@ -201,8 +214,12 @@ public class Display extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                .addComponent(lblTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(Dialog_GameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnExit1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -215,9 +232,8 @@ public class Display extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/title.jpg"))); // NOI18N
+        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
 
-        btn_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a1.jpg"))); // NOI18N
         btn_0.setPreferredSize(new java.awt.Dimension(125, 125));
         btn_0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,7 +241,6 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a2.jpg"))); // NOI18N
         btn_1.setPreferredSize(new java.awt.Dimension(125, 125));
         btn_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,25 +248,18 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        btn_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a3.jpg"))); // NOI18N
         btn_2.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a4.jpg"))); // NOI18N
         btn_3.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a5.jpg"))); // NOI18N
         btn_4.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a6.jpg"))); // NOI18N
         btn_5.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a7.jpg"))); // NOI18N
         btn_6.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a8.jpg"))); // NOI18N
         btn_7.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a9.jpg"))); // NOI18N
         btn_8.setPreferredSize(new java.awt.Dimension(125, 125));
 
         btn_Back.setText("Back");
@@ -353,7 +361,7 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExit1ActionPerformed
 
     private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackActionPerformed
-        Dialog_Intro.setVisible(true);
+        Dialog_GameOver.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_BackActionPerformed
 
@@ -371,18 +379,25 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-        
+         checkArray(userArray);
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-        
+        checkArray(userArray);
     }//GEN-LAST:event_btn_1ActionPerformed
 //GameOverScreen
 
     void DisplayGOScreen(String GOText) {
         lblTxt.setText(GOText);
         Dialog_GameOver.setVisible(true);
+        xml.ReadXML();
         this.setVisible(false);
+        HighScore.setText("NAME\t\t                                SCORE\n");
+        for (int i=0;i<xml.points.size();i++){
+         HighScore.append(xml.name.get(i)+"\t\t                                  "+xml.points.get(i)+"\n");
+            
+    }
+
     }
 
     //assign correct array numbers
@@ -442,7 +457,7 @@ public class Display extends javax.swing.JFrame {
                 }
             }
         }
-
+           xml.CheckforFile();
         moves = 31;
     }
 //assign pictures to location
@@ -540,6 +555,7 @@ public class Display extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Dialog_GameOver;
     private javax.swing.JDialog Dialog_Intro;
+    private javax.swing.JTextArea HighScore;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnExit1;
@@ -556,6 +572,8 @@ public class Display extends javax.swing.JFrame {
     private javax.swing.JButton btn_8;
     private javax.swing.JButton btn_Back;
     private javax.swing.JComboBox comboboxPictureSelection;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDisplayPicture;
     private javax.swing.JLabel lblInfo1;
     private javax.swing.JLabel lblTitle;
