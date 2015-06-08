@@ -19,15 +19,16 @@ public class Display extends javax.swing.JFrame {
     /**
      * Creates new form Screen_Intro
      */
-         //variables
-
-    XML xml=new XML();
+    //variables
+    XML xml = new XML();
     public int[][] correctArray = new int[3][3];
     ImageIcon[] images = new ImageIcon[9];
     JButton[][] buttonsArray = new JButton[3][3];
     int[][] userArray = new int[3][3];
-    int moves;String Player="Zuraiz";
-    String[] score,name;
+    int moves;
+    int selection;
+    String Player = "Zuraiz";
+    String[] score, name;
 
     public Display() {
         initComponents();
@@ -80,9 +81,17 @@ public class Display extends javax.swing.JFrame {
         lblmoves = new javax.swing.JLabel();
 
         Dialog_Intro.setBackground(new java.awt.Color(0, 0, 0));
-        Dialog_Intro.setMinimumSize(new java.awt.Dimension(400, 400));
+        Dialog_Intro.setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        Dialog_Intro.setMaximumSize(new java.awt.Dimension(428, 615));
+        Dialog_Intro.setMinimumSize(new java.awt.Dimension(428, 615));
+        Dialog_Intro.setModal(false);
+        Dialog_Intro.setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
         Dialog_Intro.setName("Intro_Dialog"); // NOI18N
+        Dialog_Intro.setPreferredSize(new java.awt.Dimension(428, 615));
+        Dialog_Intro.setResizable(false);
+        Dialog_Intro.setSize(new java.awt.Dimension(406, 620));
 
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
 
         btnStart.setText("START PLAYING");
@@ -116,49 +125,51 @@ public class Display extends javax.swing.JFrame {
         lblInfo1.setText("Please select the image to unscramble:");
 
         lblDisplayPicture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDisplayPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/1_main.png"))); // NOI18N
 
         javax.swing.GroupLayout Dialog_IntroLayout = new javax.swing.GroupLayout(Dialog_Intro.getContentPane());
         Dialog_Intro.getContentPane().setLayout(Dialog_IntroLayout);
         Dialog_IntroLayout.setHorizontalGroup(
             Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dialog_IntroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDisplayPicture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_IntroLayout.createSequentialGroup()
-                        .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnInstructions, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_IntroLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Dialog_IntroLayout.createSequentialGroup()
                         .addComponent(lblInfo1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboboxPictureSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(9, 9, 9)))
-                .addContainerGap())
+                        .addGap(10, 10, 10)
+                        .addComponent(comboboxPictureSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Dialog_IntroLayout.createSequentialGroup()
+                        .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInstructions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblDisplayPicture))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(Dialog_IntroLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
         Dialog_IntroLayout.setVerticalGroup(
             Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dialog_IntroLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addGap(10, 10, 10)
                 .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblInfo1)
                     .addComponent(comboboxPictureSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblDisplayPicture, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(lblDisplayPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
                         .addComponent(btnInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addGap(10, 10, 10))
         );
 
         Dialog_GameOver.setMinimumSize(new java.awt.Dimension(400, 400));
@@ -366,20 +377,22 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_BackActionPerformed
 
     private void comboboxPictureSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxPictureSelectionActionPerformed
-        
+
         int pictureSelected = comboboxPictureSelection.getSelectedIndex();
         if (pictureSelected == 0) {
             System.out.println(0);
-        lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\Image1_Original.jpg"));}
-        else if (pictureSelected == 1)
-            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\Image2_Original.jpg"));
-        else if (pictureSelected == 2)
-            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\Image3_Original.jpg"));
-        
+            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\1_main.png"));
+
+        } else if (pictureSelected == 1) {
+            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\2_main.jpg"));
+        } else if (pictureSelected == 2) {
+            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\3_main.jpg"));
+        }
+        Selections(pictureSelected);
     }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-         checkArray(userArray);
+        checkArray(userArray);
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
@@ -393,11 +406,38 @@ public class Display extends javax.swing.JFrame {
         xml.ReadXML();
         this.setVisible(false);
         HighScore.setText("NAME\t\t                                SCORE\n");
-        for (int i=0;i<xml.points.size();i++){
-         HighScore.append(xml.name.get(i)+"\t\t                                  "+xml.points.get(i)+"\n");
-            
+        for (int i = 0; i < xml.points.size(); i++) {
+            HighScore.append(xml.name.get(i) + "\t\t                                  " + xml.points.get(i) + "\n");
+
+        }
+
     }
 
+    void Selections(int selected) {
+        System.out.print(selected);
+        if (selected == 0) {
+            images[0] = new ImageIcon("src\\resources\\1_1.jpg");
+            images[1] = new ImageIcon("src\\resources\\1_2.jpg");
+            images[2] = new ImageIcon("src\\resources\\1_3.jpg");
+            images[3] = new ImageIcon("src\\resources\\1_4.jpg");
+            images[4] = new ImageIcon("src\\resources\\1_5.jpg");
+            images[5] = new ImageIcon("src\\resources\\1_6.jpg");
+            images[6] = new ImageIcon("src\\resources\\1_7.jpg");
+            images[7] = new ImageIcon("src\\resources\\1_8.jpg");
+            images[8] = new ImageIcon("src\\resources\\1_9.jpg");
+
+        } else if (selected == 1) {
+            images[0] = new ImageIcon("src\\resources\\2_1.jpg");
+            images[1] = new ImageIcon("src\\resources\\2_2.jpg");
+            images[2] = new ImageIcon("src\\resources\\2_3.jpg");
+            images[3] = new ImageIcon("src\\resources\\2_4.jpg");
+            images[4] = new ImageIcon("src\\resources\\2_5.jpg");
+            images[5] = new ImageIcon("src\\resources\\2_6.jpg");
+            images[6] = new ImageIcon("src\\resources\\2_7.jpg");
+            images[7] = new ImageIcon("src\\resources\\2_8.jpg");
+            images[8] = new ImageIcon("src\\resources\\2_9.jpg");
+        }
+        ImageToNumber(true);
     }
 
     //assign correct array numbers
@@ -412,7 +452,6 @@ public class Display extends javax.swing.JFrame {
         correctArray[2][0] = 7;
         correctArray[2][1] = 8;
         correctArray[2][2] = 9;
-        
 
         buttonsArray[0][0] = btn_0;
         buttonsArray[0][1] = btn_1;
@@ -424,15 +463,15 @@ public class Display extends javax.swing.JFrame {
         buttonsArray[2][1] = btn_7;
         buttonsArray[2][2] = btn_8;
 
-        images[0] = new ImageIcon("src\\slidinggame\\Test_1.jpg");
-        images[1] = new ImageIcon("src\\slidinggame\\Test_2.jpg");
-        images[2] = new ImageIcon("src\\slidinggame\\Test_3.jpg");
-        images[3] = new ImageIcon("src\\slidinggame\\Test_4.jpg");
-        images[4] = new ImageIcon("src\\slidinggame\\Test_5.jpg");
-        images[5] = new ImageIcon("src\\slidinggame\\Test_6.jpg");
-        images[6] = new ImageIcon("src\\slidinggame\\Test_7.jpg");
-        images[7] = new ImageIcon("src\\slidinggame\\Test_8.jpg");
-        images[8] = new ImageIcon("src\\slidinggame\\Test_9.jpg");
+        images[0] = new ImageIcon("src\\resources\\1_1.jpg");
+        images[1] = new ImageIcon("src\\resources\\1_2.jpg");
+        images[2] = new ImageIcon("src\\resources\\1_3.jpg");
+        images[3] = new ImageIcon("src\\resources\\1_4.jpg");
+        images[4] = new ImageIcon("src\\resources\\1_5.jpg");
+        images[5] = new ImageIcon("src\\resources\\1_6.jpg");
+        images[6] = new ImageIcon("src\\resources\\1_7.jpg");
+        images[7] = new ImageIcon("src\\resources\\1_8.jpg");
+        images[8] = new ImageIcon("src\\resources\\1_9.jpg");
         // </editor-fold>
 //randomize location of pictures
 
@@ -448,29 +487,32 @@ public class Display extends javax.swing.JFrame {
         }
         System.out.print(Arrays.deepToString(userArray));
 
-        ImageToNumber();
-           for (int i = 0; i < 3; i++) {
+        ImageToNumber(false);
+        Selections(selection);
+        for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (userArray[i][j]==9){
-                buttonsArray[i][j].setEnabled(false);
-                buttonsArray[i][j].setIcon(null);
+                if (userArray[i][j] == 9) {
+                    buttonsArray[i][j].setEnabled(false);
+                    buttonsArray[i][j].setIcon(null);
                 }
             }
         }
-           xml.CheckforFile();
+        xml.CheckforFile();
         moves = 31;
     }
 //assign pictures to location
 
-    void ImageToNumber(){
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                buttonsArray[i][j].setIcon(images[(userArray[i][j]-1)]);
+    void ImageToNumber(boolean state) {
+        if (state) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    buttonsArray[i][j].setIcon(images[(userArray[i][j] - 1)]);
+                }
             }
         }
     }
-       //randomize pictures
- 
+    //randomize pictures
+
     public int Randomizer(int[] A, int B) {
         if (linearSearch(A, B)) {
             B = (int) (Math.random() * 9) + 1;
