@@ -111,6 +111,7 @@ public class Display extends javax.swing.JFrame {
         lblInfo1.setText("Please select the image to unscramble:");
 
         lblDisplayPicture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDisplayPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Image1_Original.jpg"))); // NOI18N
 
         javax.swing.GroupLayout Dialog_IntroLayout = new javax.swing.GroupLayout(Dialog_Intro.getContentPane());
         Dialog_Intro.getContentPane().setLayout(Dialog_IntroLayout);
@@ -214,9 +215,9 @@ public class Display extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
+        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/title.jpg"))); // NOI18N
 
-        btn_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_1.jpg"))); // NOI18N
+        btn_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a1.jpg"))); // NOI18N
         btn_0.setPreferredSize(new java.awt.Dimension(125, 125));
         btn_0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,7 +225,7 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_2.jpg"))); // NOI18N
+        btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a2.jpg"))); // NOI18N
         btn_1.setPreferredSize(new java.awt.Dimension(125, 125));
         btn_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,24 +233,25 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        btn_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_3.jpg"))); // NOI18N
+        btn_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a3.jpg"))); // NOI18N
         btn_2.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_4.jpg"))); // NOI18N
+        btn_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a4.jpg"))); // NOI18N
         btn_3.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_5.jpg"))); // NOI18N
+        btn_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a5.jpg"))); // NOI18N
         btn_4.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_6.jpg"))); // NOI18N
+        btn_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a6.jpg"))); // NOI18N
         btn_5.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_7.jpg"))); // NOI18N
+        btn_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a7.jpg"))); // NOI18N
         btn_6.setPreferredSize(new java.awt.Dimension(125, 125));
 
-        btn_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/Test_8.jpg"))); // NOI18N
+        btn_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a8.jpg"))); // NOI18N
         btn_7.setPreferredSize(new java.awt.Dimension(125, 125));
 
+        btn_8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/a9.jpg"))); // NOI18N
         btn_8.setPreferredSize(new java.awt.Dimension(125, 125));
 
         btn_Back.setText("Back");
