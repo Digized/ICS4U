@@ -21,11 +21,13 @@ public class Display extends javax.swing.JFrame {
      */
          //variables
 
+    XML xml=new XML();
     public int[][] correctArray = new int[3][3];
     ImageIcon[] images = new ImageIcon[9];
     JButton[][] buttonsArray = new JButton[3][3];
     int[][] userArray = new int[3][3];
-    int moves;
+    int moves;String Player="Zuraiz";
+    String[] score,name;
 
     public Display() {
         initComponents();
@@ -353,7 +355,7 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExit1ActionPerformed
 
     private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackActionPerformed
-        Dialog_Intro.setVisible(true);
+        Dialog_GameOver.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_BackActionPerformed
 
@@ -371,18 +373,25 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-        
+         checkArray(userArray);
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-        
+        checkArray(userArray);
     }//GEN-LAST:event_btn_1ActionPerformed
 //GameOverScreen
 
     void DisplayGOScreen(String GOText) {
         lblTxt.setText(GOText);
         Dialog_GameOver.setVisible(true);
+        xml.ReadXML();
         this.setVisible(false);
+        HighScore.setText("NAME\t\t                                SCORE\n");
+        for (int i=0;i<xml.points.size();i++){
+         HighScore.append(xml.name.get(i)+"\t\t                                  "+xml.points.get(i)+"\n");
+            
+    }
+
     }
 
     //assign correct array numbers
