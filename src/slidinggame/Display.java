@@ -82,12 +82,9 @@ public class Display extends javax.swing.JFrame {
 
         Dialog_Intro.setBackground(new java.awt.Color(0, 0, 0));
         Dialog_Intro.setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        Dialog_Intro.setMaximumSize(new java.awt.Dimension(428, 615));
         Dialog_Intro.setMinimumSize(new java.awt.Dimension(428, 615));
-        Dialog_Intro.setModal(false);
         Dialog_Intro.setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
         Dialog_Intro.setName("Intro_Dialog"); // NOI18N
-        Dialog_Intro.setPreferredSize(new java.awt.Dimension(428, 615));
         Dialog_Intro.setResizable(false);
         Dialog_Intro.setSize(new java.awt.Dimension(406, 620));
 
@@ -198,6 +195,7 @@ public class Display extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HIGHSCORES");
 
+        HighScore.setEditable(false);
         HighScore.setColumns(20);
         HighScore.setRows(5);
         jScrollPane1.setViewportView(HighScore);
@@ -260,18 +258,53 @@ public class Display extends javax.swing.JFrame {
         });
 
         btn_2.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_2ActionPerformed(evt);
+            }
+        });
 
         btn_3.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_3ActionPerformed(evt);
+            }
+        });
 
         btn_4.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_4ActionPerformed(evt);
+            }
+        });
 
         btn_5.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_5ActionPerformed(evt);
+            }
+        });
 
         btn_6.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_6ActionPerformed(evt);
+            }
+        });
 
         btn_7.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_7ActionPerformed(evt);
+            }
+        });
 
         btn_8.setPreferredSize(new java.awt.Dimension(125, 125));
+        btn_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_8ActionPerformed(evt);
+            }
+        });
 
         btn_Back.setText("Back");
         btn_Back.addActionListener(new java.awt.event.ActionListener() {
@@ -392,12 +425,218 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-        checkArray(userArray);
+        int temp;
+        if (!buttonsArray[0][1].isEnabled()) {
+            temp = userArray[0][1];
+            userArray[0][1] = userArray[0][0];
+            userArray[0][0] = temp;
+            checkArray(userArray);
+        }
+        if (!buttonsArray[1][0].isEnabled()) {
+            temp = userArray[1][0];
+            userArray[1][0] = userArray[0][0];
+            userArray[0][0] = temp;
+            checkArray(userArray);
+
+        }
+
+        ImageToNumber();
+
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-        checkArray(userArray);
+        int temp;
+        if (!buttonsArray[0][0].isEnabled()) {
+            temp = userArray[0][0];
+            userArray[0][0] = userArray[0][1];
+            userArray[0][1] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[1][1].isEnabled()) {
+            temp = userArray[1][1];
+            userArray[1][1] = userArray[0][1];
+            userArray[0][1] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[0][2].isEnabled()) {
+            temp = userArray[0][2];
+            userArray[0][2] = userArray[0][1];
+            userArray[0][1] = temp;
+            checkArray(userArray);
+
+        }
+
+        ImageToNumber();
     }//GEN-LAST:event_btn_1ActionPerformed
+
+    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
+        int temp;
+        if (!buttonsArray[0][1].isEnabled()) {
+            temp = userArray[0][1];
+            userArray[0][1] = userArray[0][2];
+            userArray[0][2] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[1][2].isEnabled()) {
+            temp = userArray[1][2];
+            userArray[1][2] = userArray[0][2];
+            userArray[0][2] = temp;
+            checkArray(userArray);
+
+        }
+
+        ImageToNumber();
+    }//GEN-LAST:event_btn_2ActionPerformed
+
+    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
+        int temp;
+        if (!buttonsArray[0][0].isEnabled()) {
+            temp = userArray[0][0];
+            userArray[0][0] = userArray[1][0];
+            userArray[1][0] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[1][1].isEnabled()) {
+            temp = userArray[1][1];
+            userArray[1][1] = userArray[1][0];
+            userArray[1][0] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[2][0].isEnabled()) {
+            temp = userArray[2][0];
+            userArray[2][0] = userArray[1][0];
+            userArray[1][0] = temp;
+            checkArray(userArray);
+
+        }
+
+        ImageToNumber();
+    }//GEN-LAST:event_btn_3ActionPerformed
+
+    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
+        int temp;
+        if (!buttonsArray[0][1].isEnabled()) {
+            temp = userArray[0][1];
+            userArray[0][1] = userArray[1][1];
+            userArray[1][1] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[1][0].isEnabled()) {
+            temp = userArray[1][0];
+            userArray[1][0] = userArray[1][1];
+            userArray[1][1] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[1][2].isEnabled()) {
+            temp = userArray[1][2];
+            userArray[1][2] = userArray[1][1];
+            userArray[1][1] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[2][1].isEnabled()) {
+            temp = userArray[2][1];
+            userArray[2][1] = userArray[1][1];
+            userArray[1][1] = temp;
+            checkArray(userArray);
+
+        }
+
+        ImageToNumber();    }//GEN-LAST:event_btn_4ActionPerformed
+
+    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+        int temp;
+        if (!buttonsArray[0][2].isEnabled()) {
+            temp = userArray[0][2];
+            userArray[0][2] = userArray[1][2];
+            userArray[1][2] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[2][2].isEnabled()) {
+            temp = userArray[2][2];
+            userArray[2][2] = userArray[1][2];
+            userArray[1][2] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[1][1].isEnabled()) {
+            temp = userArray[1][1];
+            userArray[1][1] = userArray[1][2];
+            userArray[1][2] = temp;
+            checkArray(userArray);
+
+        }
+        ImageToNumber();
+    }//GEN-LAST:event_btn_5ActionPerformed
+
+    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
+        int temp;
+        if (!buttonsArray[1][0].isEnabled()) {
+            temp = userArray[1][0];
+            userArray[1][0] = userArray[2][0];
+            userArray[2][0] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[2][1].isEnabled()) {
+            temp = userArray[2][1];
+            userArray[2][1] = userArray[2][0];
+            userArray[2][0] = temp;
+            checkArray(userArray);
+
+        }
+        ImageToNumber();    }//GEN-LAST:event_btn_6ActionPerformed
+
+    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
+        int temp;
+        if (!buttonsArray[2][0].isEnabled()) {
+            temp = userArray[2][0];
+            userArray[2][0] = userArray[2][1];
+            userArray[2][1] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[2][2].isEnabled()) {
+            temp = userArray[2][2];
+            userArray[2][2] = userArray[2][1];
+            userArray[2][1] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[1][1].isEnabled()) {
+            temp = userArray[1][1];
+            userArray[1][1] = userArray[2][1];
+            userArray[2][1] = temp;
+            checkArray(userArray);
+
+        }
+        ImageToNumber();    }//GEN-LAST:event_btn_7ActionPerformed
+
+    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
+        int temp;
+        if (!buttonsArray[1][2].isEnabled()) {
+            temp = userArray[1][2];
+            userArray[1][2] = userArray[2][2];
+            userArray[2][2] = temp;
+            checkArray(userArray);
+
+        }
+        if (!buttonsArray[2][1].isEnabled()) {
+            temp = userArray[2][1];
+            userArray[2][1] = userArray[2][2];
+            userArray[2][2] = temp;
+            checkArray(userArray);
+
+        }
+        ImageToNumber();    }//GEN-LAST:event_btn_8ActionPerformed
 //GameOverScreen
 
     void DisplayGOScreen(String GOText) {
@@ -437,7 +676,7 @@ public class Display extends javax.swing.JFrame {
             images[7] = new ImageIcon("src\\resources\\2_8.jpg");
             images[8] = new ImageIcon("src\\resources\\2_9.jpg");
         }
-        ImageToNumber(true);
+        ImageToNumber();
     }
 
     //assign correct array numbers
@@ -487,29 +726,32 @@ public class Display extends javax.swing.JFrame {
         }
         System.out.print(Arrays.deepToString(userArray));
 
-        ImageToNumber(false);
+        ImageToNumber();
         Selections(selection);
+
+        xml.CheckforFile();
+        moves = 31;
+    }
+//assign pictures to location
+
+    void ImageToNumber() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                buttonsArray[i][j].setEnabled(true);
+
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                buttonsArray[i][j].setIcon(images[(userArray[i][j] - 1)]);
                 if (userArray[i][j] == 9) {
                     buttonsArray[i][j].setEnabled(false);
                     buttonsArray[i][j].setIcon(null);
                 }
             }
         }
-        xml.CheckforFile();
-        moves = 31;
-    }
-//assign pictures to location
 
-    void ImageToNumber(boolean state) {
-        if (state) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    buttonsArray[i][j].setIcon(images[(userArray[i][j] - 1)]);
-                }
-            }
-        }
     }
     //randomize pictures
 
