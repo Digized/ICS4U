@@ -54,8 +54,8 @@ public class Display extends javax.swing.JFrame {
         btnInstructions = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         comboboxPictureSelection = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblInfo1 = new javax.swing.JLabel();
+        lblDisplayPicture = new javax.swing.JLabel();
         Dialog_GameOver = new javax.swing.JDialog();
         lblTitle2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -108,10 +108,9 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Please select the image to unscramble:");
+        lblInfo1.setText("Please select the image to unscramble:");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Insert image here");
+        lblDisplayPicture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout Dialog_IntroLayout = new javax.swing.GroupLayout(Dialog_Intro.getContentPane());
         Dialog_Intro.getContentPane().setLayout(Dialog_IntroLayout);
@@ -120,7 +119,7 @@ public class Display extends javax.swing.JFrame {
             .addGroup(Dialog_IntroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDisplayPicture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_IntroLayout.createSequentialGroup()
                         .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,7 +129,7 @@ public class Display extends javax.swing.JFrame {
                             .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_IntroLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblInfo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comboboxPictureSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(9, 9, 9)))
@@ -143,10 +142,10 @@ public class Display extends javax.swing.JFrame {
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblInfo1)
                     .addComponent(comboboxPictureSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addComponent(lblDisplayPicture, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
@@ -357,7 +356,16 @@ public class Display extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_BackActionPerformed
 
     private void comboboxPictureSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxPictureSelectionActionPerformed
-        // TODO add your handling code here:
+        
+        int pictureSelected = comboboxPictureSelection.getSelectedIndex();
+        if (pictureSelected == 0) {
+            System.out.println(0);
+        lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\Image1_Original.jpg"));}
+        else if (pictureSelected == 1)
+            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\Image2_Original.jpg"));
+        else if (pictureSelected == 2)
+            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\Image3_Original.jpg"));
+        
     }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
@@ -546,8 +554,8 @@ public class Display extends javax.swing.JFrame {
     private javax.swing.JButton btn_8;
     private javax.swing.JButton btn_Back;
     private javax.swing.JComboBox comboboxPictureSelection;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblDisplayPicture;
+    private javax.swing.JLabel lblInfo1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle2;
