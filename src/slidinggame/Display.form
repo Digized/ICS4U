@@ -26,30 +26,33 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblInfo1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="comboboxPictureSelection" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="btnStart" min="-2" pref="283" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnInstructions" max="32767" attributes="0"/>
-                              <Component id="btnExit" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblInfo1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Component id="comboboxPictureSelection" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnStart" min="-2" pref="283" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnInstructions" pref="0" max="32767" attributes="0"/>
+                                      <Component id="btnExit" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="lblDisplayPicture" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Component id="lblDisplayPicture" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblTitle" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="lblTitle" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -84,13 +87,15 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/slidinggame/title.jpg"/>
+              <Image iconType="3" name="/resources/title.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnStart">
           <Properties>
-            <Property name="text" type="java.lang.String" value="START PLAYING"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/start_intro.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStartActionPerformed"/>
@@ -98,7 +103,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnInstructions">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Instructions"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/instructionsImage.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInstructionsActionPerformed"/>
@@ -106,7 +113,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnExit">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Exit"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/exitImage.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
@@ -161,7 +170,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnBack" min="-2" pref="181" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnExit1" max="32767" attributes="0"/>
+                          <Component id="btnExit1" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -179,10 +188,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="201" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="192" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnExit1" pref="40" max="32767" attributes="0"/>
+                      <Component id="btnExit1" max="32767" attributes="0"/>
                       <Component id="btnBack" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -194,13 +203,15 @@
         <Component class="javax.swing.JLabel" name="lblTitle2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/slidinggame/title.jpg"/>
+              <Image iconType="3" name="/resources/title.jpg"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnBack">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Back"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/backImage_GameOver.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
@@ -217,7 +228,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnExit1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Exit"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/exitImage_GameOver.jpg"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExit1ActionPerformed"/>
@@ -283,7 +296,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_Back" max="32767" attributes="0"/>
+                  <Component id="btn_Back" pref="0" max="32767" attributes="0"/>
                   <Component id="lblTitle1" max="32767" attributes="0"/>
                   <Component id="lblmoves" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
@@ -353,7 +366,7 @@
     <Component class="javax.swing.JLabel" name="lblTitle1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/slidinggame/title.jpg"/>
+          <Image iconType="3" name="/resources/title.jpg"/>
         </Property>
       </Properties>
     </Component>
@@ -449,7 +462,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_Back">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Back"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/resources/backImage.jpg"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_BackActionPerformed"/>
@@ -457,6 +472,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblmoves">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="33" red="ff" type="rgb"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Moves left: 31"/>
       </Properties>

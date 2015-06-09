@@ -89,23 +89,23 @@ public class Display extends javax.swing.JFrame {
         Dialog_Intro.setSize(new java.awt.Dimension(406, 620));
 
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/title.jpg"))); // NOI18N
 
-        btnStart.setText("START PLAYING");
+        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/start_intro.jpg"))); // NOI18N
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
             }
         });
 
-        btnInstructions.setText("Instructions");
+        btnInstructions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/instructionsImage.jpg"))); // NOI18N
         btnInstructions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInstructionsActionPerformed(evt);
             }
         });
 
-        btnExit.setText("Exit");
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/exitImage.jpg"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -130,23 +130,24 @@ public class Display extends javax.swing.JFrame {
             Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Dialog_IntroLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
-                        .addComponent(lblInfo1)
-                        .addGap(10, 10, 10)
-                        .addComponent(comboboxPictureSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(Dialog_IntroLayout.createSequentialGroup()
+                                .addComponent(lblInfo1)
+                                .addGap(10, 10, 10)
+                                .addComponent(comboboxPictureSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(Dialog_IntroLayout.createSequentialGroup()
+                                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addComponent(lblDisplayPicture))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
-                        .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnInstructions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(lblDisplayPicture))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(Dialog_IntroLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                        .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(10, 10, 10))))
         );
         Dialog_IntroLayout.setVerticalGroup(
             Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +173,9 @@ public class Display extends javax.swing.JFrame {
         Dialog_GameOver.setMinimumSize(new java.awt.Dimension(400, 400));
         Dialog_GameOver.setName("Intro_Dialog"); // NOI18N
 
-        lblTitle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
+        lblTitle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/title.jpg"))); // NOI18N
 
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/backImage_GameOver.jpg"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -185,7 +186,7 @@ public class Display extends javax.swing.JFrame {
         lblTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTxt.setText("Insert G.O text here");
 
-        btnExit1.setText("Exit");
+        btnExit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/exitImage_GameOver.jpg"))); // NOI18N
         btnExit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExit1ActionPerformed(evt);
@@ -213,7 +214,7 @@ public class Display extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dialog_GameOverLayout.createSequentialGroup()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnExit1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -227,10 +228,10 @@ public class Display extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(Dialog_GameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnExit1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(btnExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -241,7 +242,7 @@ public class Display extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slidinggame/title.jpg"))); // NOI18N
+        lblTitle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/title.jpg"))); // NOI18N
 
         btn_0.setPreferredSize(new java.awt.Dimension(125, 125));
         btn_0.addActionListener(new java.awt.event.ActionListener() {
@@ -306,13 +307,14 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        btn_Back.setText("Back");
+        btn_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/backImage.jpg"))); // NOI18N
         btn_Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_BackActionPerformed(evt);
             }
         });
 
+        lblmoves.setForeground(new java.awt.Color(255, 51, 0));
         lblmoves.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblmoves.setText("Moves left: 31");
 
@@ -323,7 +325,7 @@ public class Display extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(lblTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblmoves, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
