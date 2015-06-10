@@ -197,6 +197,7 @@ public class Display extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/highscoresImage.jpg"))); // NOI18N
 
         HighScore.setEditable(false);
+        HighScore.setBackground(new java.awt.Color(0, 204, 0));
         HighScore.setColumns(20);
         HighScore.setRows(5);
         jScrollPane1.setViewportView(HighScore);
