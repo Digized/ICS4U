@@ -31,11 +31,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblInfo1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="comboboxPictureSelection" max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="btnStart" min="-2" pref="283" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -61,23 +56,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="lblTitle" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblInfo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboboxPictureSelection" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblDisplayPicture" min="-2" pref="400" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="btnInstructions" min="-2" pref="31" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnExit" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <Component id="btnStart" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -120,25 +110,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="comboboxPictureSelection">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Image 1"/>
-                <StringItem index="1" value="Image 2"/>
-                <StringItem index="2" value="Image 3"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboboxPictureSelectionActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblInfo1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Please select the image to unscramble:"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDisplayPicture">
           <Properties>
@@ -301,12 +272,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_Back" pref="0" max="32767" attributes="0"/>
-                  <Component id="lblTitle1" max="32767" attributes="0"/>
-                  <Component id="lblmoves" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Component id="lblTitle1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="btn_0" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btn_1" min="-2" max="-2" attributes="0"/>
@@ -327,42 +296,53 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btn_8" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="lblmoves" alignment="0" min="-2" pref="386" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btn_Back" min="-2" pref="386" max="-2" attributes="0"/>
+                          <Component id="lblCompareImage" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="lblTitle1" min="-2" pref="60" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_0" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_2" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_0" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btn_4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_5" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btn_6" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_7" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_8" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="lblCompareImage" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_5" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblmoves" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="btn_Back" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_8" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblmoves" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="btn_Back" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -482,6 +462,13 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Moves: 0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCompareImage">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/resources/1_main.png"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>
