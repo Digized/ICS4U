@@ -31,7 +31,7 @@ public class XML {
 
     ArrayList<String> points = new ArrayList<String>();
     ArrayList<String> name = new ArrayList<String>();
-
+//check if the file Scores.xml exist if not create it
     public void CheckforFile() {
         File f = new File("Scores.xml");
         if (f.exists() && !f.isDirectory()) {
@@ -62,7 +62,7 @@ public class XML {
             }
         }
     }
-
+//write Scores.xml
     public void SetScore(int score, String name) {
         try {
             String filepath = "Scores.xml";
@@ -95,7 +95,7 @@ public class XML {
         }
 
     }
-
+//read Scores.xml
     public void ReadXML() {
         try {
             String filepath = "Scores.xml";
@@ -115,9 +115,6 @@ public class XML {
                 name.add(i, Score.getElementsByTagName("name").item(0).getTextContent());
 
             }
-
-            System.out.println(points.toString());
-            System.out.print(name.toString());
 
         } catch (ParserConfigurationException | SAXException | IOException ex) {
             Logger.getLogger(XML.class

@@ -23,12 +23,13 @@ public class Display extends javax.swing.JFrame {
     XML xml = new XML();
     public int[][] correctArray = new int[3][3];
     ImageIcon[] images = new ImageIcon[9];
+
     JButton[][] buttonsArray = new JButton[3][3];
     int[][] userArray = new int[3][3];
     int moves;
-    int selection;
-    String Player = "Zuraiz";
-    String[] score, name;
+    public int selection;
+    String Player = "nameless";
+    String[] score;
 
     public Display() {
         initComponents();
@@ -317,7 +318,7 @@ public class Display extends javax.swing.JFrame {
 
         lblmoves.setForeground(new java.awt.Color(255, 51, 0));
         lblmoves.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblmoves.setText("Moves left: 31");
+        lblmoves.setText("Moves: 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -382,39 +383,39 @@ public class Display extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {
 
         new Display().setVisible(true);
         Dialog_Intro.dispose();
 
+    }
 
-    }//GEN-LAST:event_btnStartActionPerformed
-
-    private void btnInstructionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstructionsActionPerformed
+    private void btnInstructionsActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(null, "Insert instructions here.");
-    }//GEN-LAST:event_btnInstructionsActionPerformed
+    }
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {
         Dialog_Intro.setVisible(true);
         Dialog_GameOver.setVisible(false);
-    }//GEN-LAST:event_btnBackActionPerformed
+    }
 
-    private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
+    private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
-    }//GEN-LAST:event_btnExit1ActionPerformed
+    }
 
-    private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackActionPerformed
-        Dialog_GameOver.setVisible(true);
+    private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {
+        Dialog_Intro.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btn_BackActionPerformed
+    }
 
-    private void comboboxPictureSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxPictureSelectionActionPerformed
+    private void comboboxPictureSelectionActionPerformed(java.awt.event.ActionEvent evt) {
 
         int pictureSelected = comboboxPictureSelection.getSelectedIndex();
+        selection = pictureSelected;
         if (pictureSelected == 0) {
             System.out.println(0);
             lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\1_main.png"));
@@ -424,194 +425,185 @@ public class Display extends javax.swing.JFrame {
         } else if (pictureSelected == 2) {
             lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\3_main.jpg"));
         }
-        Selections(pictureSelected);
-    }//GEN-LAST:event_comboboxPictureSelectionActionPerformed
 
-    private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
+    }
+//for the following 9 buttons
+    //when the button is clicked it looks at the button array to see if any 
+    //button is disabled beside it, if true then replace there locations in the user Array. it runs the ImageToArray function to assign new images to the buttons then checks it to see if the player has won
+
+    private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[0][1].isEnabled()) {
             temp = userArray[0][1];
             userArray[0][1] = userArray[0][0];
             userArray[0][0] = temp;
-            checkArray(userArray);
         }
         if (!buttonsArray[1][0].isEnabled()) {
             temp = userArray[1][0];
             userArray[1][0] = userArray[0][0];
             userArray[0][0] = temp;
-            checkArray(userArray);
 
         }
 
         ImageToNumber();
+        checkArray(userArray);
 
-    }//GEN-LAST:event_btn_0ActionPerformed
+    }
 
-    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[0][0].isEnabled()) {
             temp = userArray[0][0];
             userArray[0][0] = userArray[0][1];
             userArray[0][1] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[1][1].isEnabled()) {
             temp = userArray[1][1];
             userArray[1][1] = userArray[0][1];
             userArray[0][1] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[0][2].isEnabled()) {
             temp = userArray[0][2];
             userArray[0][2] = userArray[0][1];
             userArray[0][1] = temp;
-            checkArray(userArray);
 
         }
 
         ImageToNumber();
-    }//GEN-LAST:event_btn_1ActionPerformed
+        checkArray(userArray);
+    }
 
-    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
+    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[0][1].isEnabled()) {
             temp = userArray[0][1];
             userArray[0][1] = userArray[0][2];
             userArray[0][2] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[1][2].isEnabled()) {
             temp = userArray[1][2];
             userArray[1][2] = userArray[0][2];
             userArray[0][2] = temp;
-            checkArray(userArray);
 
         }
 
         ImageToNumber();
-    }//GEN-LAST:event_btn_2ActionPerformed
+        checkArray(userArray);
+    }
 
-    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
+    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[0][0].isEnabled()) {
             temp = userArray[0][0];
             userArray[0][0] = userArray[1][0];
             userArray[1][0] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[1][1].isEnabled()) {
             temp = userArray[1][1];
             userArray[1][1] = userArray[1][0];
             userArray[1][0] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[2][0].isEnabled()) {
             temp = userArray[2][0];
             userArray[2][0] = userArray[1][0];
             userArray[1][0] = temp;
-            checkArray(userArray);
 
         }
 
         ImageToNumber();
-    }//GEN-LAST:event_btn_3ActionPerformed
+        checkArray(userArray);
+    }
 
-    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
+    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[0][1].isEnabled()) {
             temp = userArray[0][1];
             userArray[0][1] = userArray[1][1];
             userArray[1][1] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[1][0].isEnabled()) {
             temp = userArray[1][0];
             userArray[1][0] = userArray[1][1];
             userArray[1][1] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[1][2].isEnabled()) {
             temp = userArray[1][2];
             userArray[1][2] = userArray[1][1];
             userArray[1][1] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[2][1].isEnabled()) {
             temp = userArray[2][1];
             userArray[2][1] = userArray[1][1];
             userArray[1][1] = temp;
-            checkArray(userArray);
 
         }
 
-        ImageToNumber();    }//GEN-LAST:event_btn_4ActionPerformed
+        ImageToNumber();
+        checkArray(userArray);
+    }
 
-    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[0][2].isEnabled()) {
             temp = userArray[0][2];
             userArray[0][2] = userArray[1][2];
             userArray[1][2] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[2][2].isEnabled()) {
             temp = userArray[2][2];
             userArray[2][2] = userArray[1][2];
             userArray[1][2] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[1][1].isEnabled()) {
             temp = userArray[1][1];
             userArray[1][1] = userArray[1][2];
             userArray[1][2] = temp;
-            checkArray(userArray);
 
         }
         ImageToNumber();
-    }//GEN-LAST:event_btn_5ActionPerformed
+        checkArray(userArray);
+    }
 
-    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
+    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[1][0].isEnabled()) {
             temp = userArray[1][0];
             userArray[1][0] = userArray[2][0];
             userArray[2][0] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[2][1].isEnabled()) {
             temp = userArray[2][1];
             userArray[2][1] = userArray[2][0];
             userArray[2][0] = temp;
-            checkArray(userArray);
 
         }
-        ImageToNumber();    }//GEN-LAST:event_btn_6ActionPerformed
+        ImageToNumber();
+        checkArray(userArray);
+    }
 
-    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
+    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[2][0].isEnabled()) {
             temp = userArray[2][0];
             userArray[2][0] = userArray[2][1];
             userArray[2][1] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[2][2].isEnabled()) {
             temp = userArray[2][2];
             userArray[2][2] = userArray[2][1];
             userArray[2][1] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[1][1].isEnabled()) {
@@ -621,70 +613,53 @@ public class Display extends javax.swing.JFrame {
             checkArray(userArray);
 
         }
-        ImageToNumber();    }//GEN-LAST:event_btn_7ActionPerformed
+        ImageToNumber();
+        checkArray(userArray);
+    }
 
-    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
+    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
         if (!buttonsArray[1][2].isEnabled()) {
             temp = userArray[1][2];
             userArray[1][2] = userArray[2][2];
             userArray[2][2] = temp;
-            checkArray(userArray);
 
         }
         if (!buttonsArray[2][1].isEnabled()) {
             temp = userArray[2][1];
             userArray[2][1] = userArray[2][2];
             userArray[2][2] = temp;
-            checkArray(userArray);
 
         }
-        ImageToNumber();    }//GEN-LAST:event_btn_8ActionPerformed
-//GameOverScreen
-
-    void DisplayGOScreen(String GOText) {
-        lblTxt.setText(GOText);
-        Dialog_GameOver.setVisible(true);
-        xml.ReadXML();
-        this.setVisible(false);
-        HighScore.setText("NAME\t\t                                SCORE\n");
-        for (int i = 0; i < xml.points.size(); i++) {
-            HighScore.append(xml.name.get(i) + "\t\t                                  " + xml.points.get(i) + "\n");
-
-        }
+        ImageToNumber();
+        checkArray(userArray);
 
     }
 
-    void Selections(int selected) {
-        System.out.print(selected);
-        if (selected == 0) {
-            images[0] = new ImageIcon("src\\resources\\1_1.jpg");
-            images[1] = new ImageIcon("src\\resources\\1_2.jpg");
-            images[2] = new ImageIcon("src\\resources\\1_3.jpg");
-            images[3] = new ImageIcon("src\\resources\\1_4.jpg");
-            images[4] = new ImageIcon("src\\resources\\1_5.jpg");
-            images[5] = new ImageIcon("src\\resources\\1_6.jpg");
-            images[6] = new ImageIcon("src\\resources\\1_7.jpg");
-            images[7] = new ImageIcon("src\\resources\\1_8.jpg");
-            images[8] = new ImageIcon("src\\resources\\1_9.jpg");
+//write and read score from the XML.java 
+    //also get user name and display in textArea
+    void DisplayGOScreen(String GOText) {
+        lblTxt.setText(GOText);
+        Player = JOptionPane.showInputDialog("Please enter your name");
+        Dialog_GameOver.setVisible(true);
 
-        } else if (selected == 1) {
-            images[0] = new ImageIcon("src\\resources\\2_1.jpg");
-            images[1] = new ImageIcon("src\\resources\\2_2.jpg");
-            images[2] = new ImageIcon("src\\resources\\2_3.jpg");
-            images[3] = new ImageIcon("src\\resources\\2_4.jpg");
-            images[4] = new ImageIcon("src\\resources\\2_5.jpg");
-            images[5] = new ImageIcon("src\\resources\\2_6.jpg");
-            images[6] = new ImageIcon("src\\resources\\2_7.jpg");
-            images[7] = new ImageIcon("src\\resources\\2_8.jpg");
-            images[8] = new ImageIcon("src\\resources\\2_9.jpg");
+        xml.SetScore(moves, Player);
+        xml.ReadXML();
+        this.setVisible(false);
+
+        HighScore.setText("NAME\t\t                                SCORE\n");
+        for (int i = 0; i < xml.points.size(); i++) {
+            HighScore.append(i + "\t" + xml.name.get(i) + "\t\t                                  " + xml.points.get(i) + "\n");
+
         }
-        ImageToNumber();
+
     }
 
     //assign correct array numbers
     public void setStart() {
         // <editor-fold defaultstate="collapsed" desc="Initialization">   
+
+        //this sets the correct array values
         correctArray[0][0] = 1;
         correctArray[0][1] = 2;
         correctArray[0][2] = 3;
@@ -695,6 +670,7 @@ public class Display extends javax.swing.JFrame {
         correctArray[2][1] = 8;
         correctArray[2][2] = 9;
 
+        //these are the button locations
         buttonsArray[0][0] = btn_0;
         buttonsArray[0][1] = btn_1;
         buttonsArray[0][2] = btn_2;
@@ -704,7 +680,7 @@ public class Display extends javax.swing.JFrame {
         buttonsArray[2][0] = btn_6;
         buttonsArray[2][1] = btn_7;
         buttonsArray[2][2] = btn_8;
-
+//image icons
         images[0] = new ImageIcon("src\\resources\\1_1.jpg");
         images[1] = new ImageIcon("src\\resources\\1_2.jpg");
         images[2] = new ImageIcon("src\\resources\\1_3.jpg");
@@ -714,9 +690,10 @@ public class Display extends javax.swing.JFrame {
         images[6] = new ImageIcon("src\\resources\\1_7.jpg");
         images[7] = new ImageIcon("src\\resources\\1_8.jpg");
         images[8] = new ImageIcon("src\\resources\\1_9.jpg");
-        // </editor-fold>
-//randomize location of pictures
 
+        // </editor-fold>
+        //randomize location of pictures
+        //this looks for and assigns random positions to a position
         int[] used = new int[9];
         int tracker = 0;
         for (int i = 0; i < 3; i++) {
@@ -727,16 +704,13 @@ public class Display extends javax.swing.JFrame {
                 tracker++;
             }
         }
-        System.out.print(Arrays.deepToString(userArray));
-
         ImageToNumber();
-        Selections(selection);
 
         xml.CheckforFile();
-        moves = 31;
+        moves = 10000;
     }
-//assign pictures to location
 
+//assign pictures to location it also sets the card with the number 9 to be disabled and to not have an icon
     void ImageToNumber() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -744,7 +718,6 @@ public class Display extends javax.swing.JFrame {
 
             }
         }
-
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttonsArray[i][j].setIcon(images[(userArray[i][j] - 1)]);
@@ -756,8 +729,8 @@ public class Display extends javax.swing.JFrame {
         }
 
     }
-    //randomize pictures
 
+//called from setStart(). this function looks for a random number in the used array if it has been used it assigns it a new number
     public int Randomizer(int[] A, int B) {
         if (linearSearch(A, B)) {
             B = (int) (Math.random() * 9) + 1;
@@ -767,8 +740,8 @@ public class Display extends javax.swing.JFrame {
         }
 
     }
-//look if location has been used
 
+//this function looks for a random number in the used array
     public boolean linearSearch(int[] A, int B) {
         for (int k = 0; k < A.length; k++) {
             if (A[k] == B) {
@@ -777,16 +750,14 @@ public class Display extends javax.swing.JFrame {
         }
         return false;
     }
-//compare user array and correct array and then display win if won or loss if lost
 
+//compare user array and correct array and then display win if won or loss if lost
     void checkArray(int userArray[][]) {
         int count = 0;
         for (int i = 0; i < correctArray.length; i++) {
             for (int j = 0; j < correctArray.length; j++) {
                 if (userArray[i][j] == correctArray[i][j]) {
                     count++;
-                    System.out.print(userArray[i][j] + "\t" + correctArray[i][j]);
-                    System.out.println(count);
                 }
             }
         }
@@ -800,7 +771,7 @@ public class Display extends javax.swing.JFrame {
             DisplayGOScreen(txt);
         }
 
-        lblmoves.setText("Moves left: " + moves);
+        lblmoves.setText("Moves: " + (10000 - moves));
     }
 
     /**
