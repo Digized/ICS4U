@@ -1,12 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+    Zuraiz Zafar and Aashir Khan
+    June 5, 2015
+    This program simulates a sliding puzzle game. An image is sliced into 9 pieces
+    and randomized on a 3x3 grid. Using the "empty" tile as a means of moving around
+    picture parts, the player is required to rearrage the individual smaller pictures
+    to replicate the original image configuration. A highscore system is also 
+    in place to store the scores of the end user
+*/
 package slidinggame;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 
@@ -30,6 +32,7 @@ public class Display extends javax.swing.JFrame {
     public int selection;
     String Player = "nameless";
     String[] score;
+    boolean canSwitch; //whether the clicked button is able to move tiles
 
     public Display() {
         initComponents();
@@ -57,15 +60,13 @@ public class Display extends javax.swing.JFrame {
         btnStart = new javax.swing.JButton();
         btnInstructions = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        comboboxPictureSelection = new javax.swing.JComboBox();
-        lblInfo1 = new javax.swing.JLabel();
         lblDisplayPicture = new javax.swing.JLabel();
         Dialog_GameOver = new javax.swing.JDialog();
         lblTitle2 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         lblTxt = new javax.swing.JLabel();
         btnExit1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblDisplayGameOverResult = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         HighScore = new javax.swing.JTextArea();
         lblTitle1 = new javax.swing.JLabel();
@@ -80,6 +81,7 @@ public class Display extends javax.swing.JFrame {
         btn_8 = new javax.swing.JButton();
         btn_Back = new javax.swing.JButton();
         lblmoves = new javax.swing.JLabel();
+        lblCompareImage = new javax.swing.JLabel();
 
         Dialog_Intro.setBackground(new java.awt.Color(0, 0, 0));
         Dialog_Intro.setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -113,15 +115,6 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        comboboxPictureSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Image 1", "Image 2", "Image 3" }));
-        comboboxPictureSelection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboboxPictureSelectionActionPerformed(evt);
-            }
-        });
-
-        lblInfo1.setText("Please select the image to unscramble:");
-
         lblDisplayPicture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDisplayPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/1_main.png"))); // NOI18N
 
@@ -134,10 +127,6 @@ public class Display extends javax.swing.JFrame {
                 .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
                         .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(Dialog_IntroLayout.createSequentialGroup()
-                                .addComponent(lblInfo1)
-                                .addGap(10, 10, 10)
-                                .addComponent(comboboxPictureSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(Dialog_IntroLayout.createSequentialGroup()
                                 .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
@@ -155,20 +144,16 @@ public class Display extends javax.swing.JFrame {
             .addGroup(Dialog_IntroLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblInfo1)
-                    .addComponent(comboboxPictureSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblDisplayPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
                         .addComponent(btnInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         Dialog_GameOver.setMinimumSize(new java.awt.Dimension(400, 400));
@@ -194,8 +179,8 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/highscoresImage.jpg"))); // NOI18N
+        lblDisplayGameOverResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDisplayGameOverResult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/highscoresImage.jpg"))); // NOI18N
 
         HighScore.setEditable(false);
         HighScore.setBackground(new java.awt.Color(0, 204, 0));
@@ -217,7 +202,7 @@ public class Display extends javax.swing.JFrame {
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExit1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblDisplayGameOverResult, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         Dialog_GameOverLayout.setVerticalGroup(
@@ -228,7 +213,7 @@ public class Display extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDisplayGameOverResult, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -320,6 +305,8 @@ public class Display extends javax.swing.JFrame {
         lblmoves.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblmoves.setText("Moves: 0");
 
+        lblCompareImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/1_main.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -327,9 +314,7 @@ public class Display extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(lblTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblmoves, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -349,35 +334,42 @@ public class Display extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblmoves, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCompareImage))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblmoves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblCompareImage))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblmoves, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -412,37 +404,25 @@ public class Display extends javax.swing.JFrame {
         this.setVisible(false);
     }
 
-    private void comboboxPictureSelectionActionPerformed(java.awt.event.ActionEvent evt) {
-
-        int pictureSelected = comboboxPictureSelection.getSelectedIndex();
-        selection = pictureSelected;
-        if (pictureSelected == 0) {
-            System.out.println(0);
-            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\1_main.png"));
-
-        } else if (pictureSelected == 1) {
-            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\2_main.jpg"));
-        } else if (pictureSelected == 2) {
-            lblDisplayPicture.setIcon(new ImageIcon("src\\resources\\3_main.jpg"));
-        }
-
-    }
 //for the following 9 buttons
     //when the button is clicked it looks at the button array to see if any 
     //button is disabled beside it, if true then replace there locations in the user Array. it runs the ImageToArray function to assign new images to the buttons then checks it to see if the player has won
-
+    //also, if the button is not able to move positions, the moves counter is not changed
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[0][1].isEnabled()) {
-            temp = userArray[0][1];
-            userArray[0][1] = userArray[0][0];
-            userArray[0][0] = temp;
-        }
-        if (!buttonsArray[1][0].isEnabled()) {
-            temp = userArray[1][0];
-            userArray[1][0] = userArray[0][0];
-            userArray[0][0] = temp;
 
+        if (!buttonsArray[0][1].isEnabled() || !buttonsArray[1][0].isEnabled()) {
+
+            if (!buttonsArray[0][1].isEnabled()) {
+                temp = userArray[0][1];
+                userArray[0][1] = userArray[0][0];
+                userArray[0][0] = temp;
+            } else if (!buttonsArray[1][0].isEnabled()) {
+                temp = userArray[1][0];
+                userArray[1][0] = userArray[0][0];
+                userArray[0][0] = temp;
+            }
+            moves--;
         }
 
         ImageToNumber();
@@ -452,23 +432,25 @@ public class Display extends javax.swing.JFrame {
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[0][0].isEnabled()) {
-            temp = userArray[0][0];
-            userArray[0][0] = userArray[0][1];
-            userArray[0][1] = temp;
 
-        }
-        if (!buttonsArray[1][1].isEnabled()) {
-            temp = userArray[1][1];
-            userArray[1][1] = userArray[0][1];
-            userArray[0][1] = temp;
+        if (!buttonsArray[0][0].isEnabled() || !buttonsArray[1][1].isEnabled() || !buttonsArray[0][2].isEnabled()) {
 
-        }
-        if (!buttonsArray[0][2].isEnabled()) {
-            temp = userArray[0][2];
-            userArray[0][2] = userArray[0][1];
-            userArray[0][1] = temp;
+            if (!buttonsArray[0][0].isEnabled()) {
+                temp = userArray[0][0];
+                userArray[0][0] = userArray[0][1];
+                userArray[0][1] = temp;
 
+            } else if (!buttonsArray[1][1].isEnabled()) {
+                temp = userArray[1][1];
+                userArray[1][1] = userArray[0][1];
+                userArray[0][1] = temp;
+
+            } else if (!buttonsArray[0][2].isEnabled()) {
+                temp = userArray[0][2];
+                userArray[0][2] = userArray[0][1];
+                userArray[0][1] = temp;
+            }
+            moves--;
         }
 
         ImageToNumber();
@@ -477,42 +459,48 @@ public class Display extends javax.swing.JFrame {
 
     private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[0][1].isEnabled()) {
-            temp = userArray[0][1];
-            userArray[0][1] = userArray[0][2];
-            userArray[0][2] = temp;
 
+        if (!buttonsArray[0][1].isEnabled() || !buttonsArray[1][2].isEnabled()) {
+
+            if (!buttonsArray[0][1].isEnabled()) {
+                temp = userArray[0][1];
+                userArray[0][1] = userArray[0][2];
+                userArray[0][2] = temp;
+
+            } else if (!buttonsArray[1][2].isEnabled()) {
+                temp = userArray[1][2];
+                userArray[1][2] = userArray[0][2];
+                userArray[0][2] = temp;
+
+            }
+            moves--;
         }
-        if (!buttonsArray[1][2].isEnabled()) {
-            temp = userArray[1][2];
-            userArray[1][2] = userArray[0][2];
-            userArray[0][2] = temp;
-
-        }
-
         ImageToNumber();
         checkArray(userArray);
     }
 
     private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[0][0].isEnabled()) {
-            temp = userArray[0][0];
-            userArray[0][0] = userArray[1][0];
-            userArray[1][0] = temp;
 
-        }
-        if (!buttonsArray[1][1].isEnabled()) {
-            temp = userArray[1][1];
-            userArray[1][1] = userArray[1][0];
-            userArray[1][0] = temp;
+        if (!buttonsArray[0][0].isEnabled() || !buttonsArray[1][1].isEnabled() || !buttonsArray[2][0].isEnabled()) {
 
-        }
-        if (!buttonsArray[2][0].isEnabled()) {
-            temp = userArray[2][0];
-            userArray[2][0] = userArray[1][0];
-            userArray[1][0] = temp;
+            if (!buttonsArray[0][0].isEnabled()) {
+                temp = userArray[0][0];
+                userArray[0][0] = userArray[1][0];
+                userArray[1][0] = temp;
 
+            } else if (!buttonsArray[1][1].isEnabled()) {
+                temp = userArray[1][1];
+                userArray[1][1] = userArray[1][0];
+                userArray[1][0] = temp;
+
+            } else if (!buttonsArray[2][0].isEnabled()) {
+                temp = userArray[2][0];
+                userArray[2][0] = userArray[1][0];
+                userArray[1][0] = temp;
+
+            }
+            moves--;
         }
 
         ImageToNumber();
@@ -521,29 +509,31 @@ public class Display extends javax.swing.JFrame {
 
     private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[0][1].isEnabled()) {
-            temp = userArray[0][1];
-            userArray[0][1] = userArray[1][1];
-            userArray[1][1] = temp;
 
-        }
-        if (!buttonsArray[1][0].isEnabled()) {
-            temp = userArray[1][0];
-            userArray[1][0] = userArray[1][1];
-            userArray[1][1] = temp;
+        if (!buttonsArray[0][1].isEnabled() || !buttonsArray[1][0].isEnabled() || !buttonsArray[1][2].isEnabled() || !buttonsArray[2][1].isEnabled()) {
 
-        }
-        if (!buttonsArray[1][2].isEnabled()) {
-            temp = userArray[1][2];
-            userArray[1][2] = userArray[1][1];
-            userArray[1][1] = temp;
+            if (!buttonsArray[0][1].isEnabled()) {
+                temp = userArray[0][1];
+                userArray[0][1] = userArray[1][1];
+                userArray[1][1] = temp;
 
-        }
-        if (!buttonsArray[2][1].isEnabled()) {
-            temp = userArray[2][1];
-            userArray[2][1] = userArray[1][1];
-            userArray[1][1] = temp;
+            } else if (!buttonsArray[1][0].isEnabled()) {
+                temp = userArray[1][0];
+                userArray[1][0] = userArray[1][1];
+                userArray[1][1] = temp;
 
+            } else if (!buttonsArray[1][2].isEnabled()) {
+                temp = userArray[1][2];
+                userArray[1][2] = userArray[1][1];
+                userArray[1][1] = temp;
+
+            } else if (!buttonsArray[2][1].isEnabled()) {
+                temp = userArray[2][1];
+                userArray[2][1] = userArray[1][1];
+                userArray[1][1] = temp;
+
+            }
+            moves--;
         }
 
         ImageToNumber();
@@ -552,73 +542,94 @@ public class Display extends javax.swing.JFrame {
 
     private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[0][2].isEnabled()) {
-            temp = userArray[0][2];
-            userArray[0][2] = userArray[1][2];
-            userArray[1][2] = temp;
 
-        }
-        if (!buttonsArray[2][2].isEnabled()) {
-            temp = userArray[2][2];
-            userArray[2][2] = userArray[1][2];
-            userArray[1][2] = temp;
+        if (!buttonsArray[0][2].isEnabled() || !buttonsArray[2][2].isEnabled() || !buttonsArray[1][1].isEnabled()) {
 
-        }
-        if (!buttonsArray[1][1].isEnabled()) {
-            temp = userArray[1][1];
-            userArray[1][1] = userArray[1][2];
-            userArray[1][2] = temp;
+            if (!buttonsArray[0][2].isEnabled()) {
+                temp = userArray[0][2];
+                userArray[0][2] = userArray[1][2];
+                userArray[1][2] = temp;
 
+            }
+            if (!buttonsArray[2][2].isEnabled()) {
+                temp = userArray[2][2];
+                userArray[2][2] = userArray[1][2];
+                userArray[1][2] = temp;
+
+            }
+            if (!buttonsArray[1][1].isEnabled()) {
+                temp = userArray[1][1];
+                userArray[1][1] = userArray[1][2];
+                userArray[1][2] = temp;
+
+            }
+            moves--;
         }
+
         ImageToNumber();
         checkArray(userArray);
     }
 
     private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[1][0].isEnabled()) {
-            temp = userArray[1][0];
-            userArray[1][0] = userArray[2][0];
-            userArray[2][0] = temp;
 
-        }
-        if (!buttonsArray[2][1].isEnabled()) {
-            temp = userArray[2][1];
-            userArray[2][1] = userArray[2][0];
-            userArray[2][0] = temp;
+        if (!buttonsArray[1][0].isEnabled() || !buttonsArray[2][1].isEnabled()) {
 
+            if (!buttonsArray[1][0].isEnabled()) {
+                temp = userArray[1][0];
+                userArray[1][0] = userArray[2][0];
+                userArray[2][0] = temp;
+
+            }
+            if (!buttonsArray[2][1].isEnabled()) {
+                temp = userArray[2][1];
+                userArray[2][1] = userArray[2][0];
+                userArray[2][0] = temp;
+
+            }
+            moves--;
         }
+
         ImageToNumber();
         checkArray(userArray);
     }
 
     private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
-        if (!buttonsArray[2][0].isEnabled()) {
-            temp = userArray[2][0];
-            userArray[2][0] = userArray[2][1];
-            userArray[2][1] = temp;
 
-        }
-        if (!buttonsArray[2][2].isEnabled()) {
-            temp = userArray[2][2];
-            userArray[2][2] = userArray[2][1];
-            userArray[2][1] = temp;
+        if (!buttonsArray[2][0].isEnabled() || !buttonsArray[2][2].isEnabled() || !buttonsArray[1][1].isEnabled()) {
 
-        }
-        if (!buttonsArray[1][1].isEnabled()) {
-            temp = userArray[1][1];
-            userArray[1][1] = userArray[2][1];
-            userArray[2][1] = temp;
-            checkArray(userArray);
+            if (!buttonsArray[2][0].isEnabled()) {
+                temp = userArray[2][0];
+                userArray[2][0] = userArray[2][1];
+                userArray[2][1] = temp;
 
+            }
+            if (!buttonsArray[2][2].isEnabled()) {
+                temp = userArray[2][2];
+                userArray[2][2] = userArray[2][1];
+                userArray[2][1] = temp;
+
+            }
+            if (!buttonsArray[1][1].isEnabled()) {
+                temp = userArray[1][1];
+                userArray[1][1] = userArray[2][1];
+                userArray[2][1] = temp;
+                checkArray(userArray);
+
+            }
+            moves--;
         }
+
         ImageToNumber();
         checkArray(userArray);
     }
 
     private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {
         int temp;
+        
+        if (!buttonsArray[1][2].isEnabled() || !buttonsArray[2][1].isEnabled()) {
+        
         if (!buttonsArray[1][2].isEnabled()) {
             temp = userArray[1][2];
             userArray[1][2] = userArray[2][2];
@@ -631,6 +642,9 @@ public class Display extends javax.swing.JFrame {
             userArray[2][2] = temp;
 
         }
+        moves--;
+        }
+        
         ImageToNumber();
         checkArray(userArray);
 
@@ -761,7 +775,7 @@ public class Display extends javax.swing.JFrame {
                 }
             }
         }
-        moves--;
+
         if (count == 9) {
             String txt = "YOU WON";
             DisplayGOScreen(txt);
@@ -829,11 +843,10 @@ public class Display extends javax.swing.JFrame {
     private javax.swing.JButton btn_7;
     private javax.swing.JButton btn_8;
     private javax.swing.JButton btn_Back;
-    private javax.swing.JComboBox comboboxPictureSelection;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCompareImage;
+    private javax.swing.JLabel lblDisplayGameOverResult;
     private javax.swing.JLabel lblDisplayPicture;
-    private javax.swing.JLabel lblInfo1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle2;
