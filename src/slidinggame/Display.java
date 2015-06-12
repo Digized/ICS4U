@@ -58,7 +58,6 @@ public class Display extends javax.swing.JFrame {
         Dialog_Intro = new javax.swing.JDialog();
         lblTitle = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
-        btnInstructions = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         lblDisplayPicture = new javax.swing.JLabel();
         Dialog_GameOver = new javax.swing.JDialog();
@@ -101,13 +100,6 @@ public class Display extends javax.swing.JFrame {
             }
         });
 
-        btnInstructions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/instructionsImage.jpg"))); // NOI18N
-        btnInstructions.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInstructionsActionPerformed(evt);
-            }
-        });
-
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/exitImage.jpg"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,9 +122,7 @@ public class Display extends javax.swing.JFrame {
                             .addGroup(Dialog_IntroLayout.createSequentialGroup()
                                 .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                             .addComponent(lblDisplayPicture))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
@@ -147,13 +137,12 @@ public class Display extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblDisplayPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(Dialog_IntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Dialog_IntroLayout.createSequentialGroup()
-                        .addComponent(btnInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Dialog_GameOver.setMinimumSize(new java.awt.Dimension(400, 400));
@@ -831,7 +820,6 @@ public class Display extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnExit1;
-    private javax.swing.JButton btnInstructions;
     private javax.swing.JButton btnStart;
     private javax.swing.JButton btn_0;
     private javax.swing.JButton btn_1;
